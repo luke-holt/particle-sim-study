@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "raylib.h"
-
 #include "pvec.h"
 
 #include <assert.h>
@@ -11,6 +11,8 @@
 
 #define ke (8.9875e9) // Coulomb's constant
 #define CHARGE (10e-6)
+
+#define SIGMOID(x) (1.0 / (1.0 + expf(-((x)-4))))
 
 #define SCW (800)
 #define SCH (600)
@@ -85,15 +87,12 @@ void pm_draw(pm_t *state) {
             pvec_t f = PFIELD(state, col, row);
             float m = pvec_mag(f);
 
-            // clip to 10
-            if (m > 10)
-                m = 10;
+            m = SIGMOID(m) * 7;
 
             pvec_t delta = pvec_scale(pvec_normalize(f), m);
             pvec_t end = pvec_add(start, delta);
 
-            if (m > 2)
-                DrawLineV(*(Vector2 *)&start, *(Vector2 *)&end, GRAY);
+            DrawLineV(*(Vector2 *)&start, *(Vector2 *)&end, GRAY);
         }
     }
 

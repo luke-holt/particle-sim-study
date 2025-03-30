@@ -34,5 +34,5 @@ state:
     t += dt
 ```
 
-`<gif coming soon>`
+![basic_pp_model](attachments/basic_pp_model.gif)
 

@@ -36,3 +36,26 @@ state:
 
 ![basic_pp_model](attachments/basic_pp_model.gif)
 
+## Basic Particle-Mesh Model
+`basic_pm_model.c` draws the electric field around static charged particles. Instead of computing the interactions between each particle, the particle mesh method computes the electric field mesh around the particles. This mesh then can be used to infer the force exerted on each particle. For many particles, this method is more computationally efficient than the Particle-Particle method, since the grid size is fixed and the execution time scales linearly in function of the particle count (as opposed to exponentially).
+
+**Simulation pseud code**
+```
+state:
+    N <- particle count
+    f <- electric field 2D mesh
+    x <- particle positions
+    q <- particle charges
+    t <- simulation time
+
+1. Calculate electric field
+    Clear electric field
+    Sum the force exerted by each particle on each mesh point.
+    state.f[i][j] += f_ijp
+
+2. Update time counter
+    t += dt
+```
+
+![basic_pm_model](attachments/basic_pm_model.png)
+

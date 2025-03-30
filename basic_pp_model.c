@@ -109,7 +109,7 @@ main(int argc, char *argv[])
     pp_t state = pp_new(1000);
     pp_randomize(&state);
 
-    InitWindow(SCW, SCH, "basic_pp_model");
+    InitWindow(SCW, SCH, "Basic Particle-Particle Model");
     SetTargetFPS(FPS);
 
     while (!WindowShouldClose()) {

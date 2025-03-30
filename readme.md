@@ -3,7 +3,7 @@ Source code for simulation projects developed while reading Computer Simulation 
 
 # Models
 ## Basic Particle-Particle Model
-`basic_pp_model.c` is the simplest particle to particle simulation of charged particles. Coulomb's Law is used as the force law.
+`pp_model.c` is the simplest particle to particle simulation of charged particles. Coulomb's Law is used as the force law.
 
 **Simulation pseudo code**
 ```
@@ -37,7 +37,7 @@ state:
 ![basic_pp_model](attachments/basic_pp_model.gif)
 
 ## Basic Particle-Mesh Model
-`basic_pm_model.c` draws the electric field around static charged particles. Instead of computing the interactions between each particle, the particle mesh method computes the electric field mesh around the particles. This mesh then can be used to infer the force exerted on each particle. For many particles, this method is more computationally efficient than the Particle-Particle method, since the grid size is fixed and the execution time scales linearly in function of the particle count (as opposed to exponentially).
+`pm_model.c` draws the electric field around static charged particles. Instead of computing the interactions between each particle, the particle mesh method computes the electric field mesh around the particles. This mesh then can be used to infer the force exerted on each particle. For many particles, this method is more computationally efficient than the Particle-Particle method, since the grid size is fixed and the execution time scales linearly in function of the particle count (as opposed to exponentially).
 
 **Simulation pseud code**
 ```
